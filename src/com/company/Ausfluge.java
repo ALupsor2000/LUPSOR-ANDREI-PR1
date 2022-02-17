@@ -56,14 +56,5 @@ public class Ausfluge {
         this.anz_teilnehmer = anz_teilnehmer;
     }
 
-    @Override
-    public String toString() {
-        return "Ausfluge{" +
-                "id=" + id +
-                ", reiseziehl='" + reiseziehl + '\'' +
-                ", preis_pro_person=" + preis_pro_person +
-                ", max_anz_teilnehmer=" + max_anz_teilnehmer +
-                ", anz_teilnehmer=" + anz_teilnehmer +
-                '}';
-    }
+
 }

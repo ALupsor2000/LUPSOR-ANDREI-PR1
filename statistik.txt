@@ -1,0 +1,5 @@
+Paris: 60
+Paris: 60
+Zanzibar: 63
+Basel: 58
+Dubai: 30

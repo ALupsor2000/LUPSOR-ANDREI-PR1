@@ -1,13 +1,11 @@
 package com.company;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -21,7 +19,7 @@ public class Main {
         List<Ausfluge> ausflugeList = new ArrayList<>();
 
         //a. Lesen aus der Datei
-        while(sc.hasNext()){
+        while (sc.hasNext()) {
             line = sc.nextLine();
             ausflug = line.split("&&");
 
@@ -40,11 +38,27 @@ public class Main {
 
         //c. Schreiben in der Datei ausflugesortiert.txt
         FileWriter fw1 = new FileWriter("ausflugesortiert.txt");
-        for(Ausfluge a : ausflugeList){
+        for (Ausfluge a : ausflugeList) {
             fw1.write(a.getId() + "&&" + a.getReiseziehl() + "&&" + a.getPreis_pro_person() + "&&" + a.getMax_anz_teilnehmer() + "&&" + a.getAnz_teilnehmer() + '\n');
         }
         fw1.close();
 
         //d. Statistik fur Top Orte
+
+
+        ausflugeList.sort(new Comparator<Ausfluge>() {
+            @Override
+            public int compare(Ausfluge o1, Ausfluge o2) {
+                return (o2.getAnz_teilnehmer()/o2.getMax_anz_teilnehmer())*100 - (o1.getAnz_teilnehmer()/o1.getMax_anz_teilnehmer())*100;
+            }
+        });
+
+        FileWriter fw2 = new FileWriter("statistik.txt");
+        for(Ausfluge a : ausflugeList){
+            fw2.write(a.getReiseziehl() + ": " + a.getMax_anz_teilnehmer() + '\n');
+        }
+        fw2.close();
+
     }
 }
+
