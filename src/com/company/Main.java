@@ -46,7 +46,5 @@ public class Main {
         fw1.close();
 
         //d. Statistik fur Top Orte
-
-
     }
 }
